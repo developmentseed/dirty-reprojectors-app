@@ -1,0 +1,43 @@
+{
+  "name": "dirty-reprojectors-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "budo --dir app/ app/index.js",
+    "build": "browserify app/index.js -o dist/bundle.js"
+  },
+  "browserify": {
+    "transform": [
+      [
+        "bubleify",
+        {
+          "bubleError": true,
+          "transforms": {
+            "dangerousForOf": true
+          }
+        }
+      ]
+    ]
+  },
+  "keywords": [],
+  "author": "Anand Thakker <vestibule@anandthakker.net> (http://anandthakker.net/)",
+  "license": "ISC",
+  "dependencies": {
+    "dirty-reprojectors": "github:developmentseed/dirty-reprojectors#1142e81ebb8b1e234b44f4c8a3a9c32e800281ba",
+    "lodash.clonedeep": "^4.5.0",
+    "mapbox-gl": "^0.28.0",
+    "react": "^15.4.0",
+    "react-dom": "^15.4.0"
+  },
+  "devDependencies": {
+    "bubleify": "^0.6.0",
+    "budo": "^9.2.2",
+    "eslint": "^3.10.2",
+    "eslint-config-standard": "^6.2.1",
+    "eslint-plugin-promise": "^3.4.0",
+    "eslint-plugin-react": "^6.7.1",
+    "eslint-plugin-standard": "^2.0.1"
+  }
+}
