@@ -4,6 +4,8 @@ const reproject = require('dirty-reprojectors')
 const projections = require('dirty-reprojectors/projections')
 const clone = require('lodash.clonedeep')
 
+const land = require('../data/ne_110m_land.json')
+
 class Map extends React.Component {
   componentDidMount () {
     this.map = new mapboxgl.Map({
@@ -17,7 +19,7 @@ class Map extends React.Component {
           },
           land: {
             type: 'geojson',
-            data: 'ne_110m_land.json'
+            data: land
           }
         },
         layers: [{

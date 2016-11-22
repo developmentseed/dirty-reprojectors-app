@@ -2,7 +2,7 @@ const React = require('React')
 const ReactDOM = require('react-dom')
 const Map = require('./map')
 
-const land = require('./ne_110m_land.json')
+const land = require('../data/ne_110m_land.json')
 
 const projections = require('dirty-reprojectors/projections')
 const projectionNames = Object.keys(projections)
