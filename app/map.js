@@ -56,11 +56,11 @@ class Map extends React.Component {
     if (projection) {
       data = clone(data)
       for (const feature of data.features) {
-        reproject({
+        feature.geometry = reproject({
           forward: projection,
           reverse: 'mercator',
           projections: projections
-        }, feature.geometry.coordinates)
+        }, feature.geometry)
       }
     }
     this.map.getSource('geojson').setData(data)

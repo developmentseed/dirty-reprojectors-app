@@ -25,7 +25,7 @@
   "author": "Anand Thakker <vestibule@anandthakker.net> (http://anandthakker.net/)",
   "license": "ISC",
   "dependencies": {
-    "dirty-reprojectors": "github:developmentseed/dirty-reprojectors#1142e81ebb8b1e234b44f4c8a3a9c32e800281ba",
+    "dirty-reprojectors": "github:developmentseed/dirty-reprojectors#c2e8eab345f81142475970ec15c5b0eb65d09e14",
     "lodash.clonedeep": "^4.5.0",
     "mapbox-gl": "^0.28.0",
     "react": "^15.4.0",
