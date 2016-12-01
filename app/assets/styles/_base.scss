@@ -1,0 +1,175 @@
+// IE < 10
+// Don't delete.
+.lt-ie10 {
+  #site-canvas {
+    display: none;
+  }
+  #nocando {
+    margin: 200px auto;
+    padding: 32px;
+    max-width: 440px;
+    background: #fff;
+    h1 {
+      font-size: 24px;
+      line-height: 1.1;
+      margin-bottom: 32px;
+    }
+  }
+}
+
+a {
+  color: gold;
+  transition: 0.2s all;
+  text-decoration: none;
+  &:hover{
+    color: #ce4728;
+  }
+  &:active{
+    color: red;
+  }
+}
+
+// Scss starts here!
+header {
+  width: 100%;
+  margin-top: 1rem;
+  padding-bottom: 1rem;
+  h1 {
+    font-size: 1.5rem;
+    margin-bottom: 0.75rem;
+    font-family: 'Poiret One';
+  }
+  p {
+    color: #ddd;
+    font-size: 0.9rem;
+  }
+}
+
+body {
+  font-family: 'Lato';
+  font-weight: 100;
+}
+
+footer {
+  width: 100%;
+  height: 2rem;
+  z-index: 1;
+  position: fixed;
+  bottom: 0;
+  background-color: black;
+  color: white;
+  font-size: 1rem;
+}
+
+.footer__left {
+  margin-top: 0.5rem;
+  margin-left: 1rem;
+  float: left;
+}
+
+.footer__right {
+  margin-top:0.5rem;
+  margin-right: 1rem;
+  float: right;
+}
+
+#app-container {
+  width: 100%;
+  height: 100%;
+}
+
+.main-map {
+  width: 70%;
+  height: 100%;
+  right: 0;
+  position: fixed;
+}
+
+.selection__panel {
+  text-align: center;
+  width: 30%;
+  min-height: 100%;
+  position: absolute;
+  z-index: 1;
+  background-color: black;
+  left: 0;
+  color: white;
+}
+
+dt {
+  font-size: 1.2rem;
+  padding: 1rem 0 1rem 0;
+  margin: 2rem 0 1.5rem;
+  border-top: 1px solid #444;
+  border-bottom: 1px solid #444;
+  font-family: 'Poiret One';
+}
+
+.dd__split {
+  margin: 0.5rem 0 0.8rem;
+  color: #bbb;
+}
+
+@mixin button-style {
+  background-color: rgba(0,0,0,0);
+  border: 1px solid #999;
+  padding: 0.75rem 1.5rem;
+  transition: 0.2s all;
+  border-radius: 5px;
+  background-color: rgba(255,255,255,0.15);
+  &:hover {
+    border-color: #555;
+    background-color: rgba(255,255,255,0.25);
+  }
+}
+
+.button__download {
+  color: white;
+  @include button-style;
+  &:hover{
+    color: white;
+  }
+}
+
+input {
+  max-width: 200px;
+  overflow-wrap: break-word;
+}
+
+select {
+  border: 1px solid #999;
+  transition: 0.2s all;
+  &:hover {
+    background-color: rgba(255,255,255,0.2);
+    border-color: #555;
+  }
+}
+
+.dt__no-top {
+  margin-top: 0;
+}
+
+.mapboxgl-ctrl-icon.mapboxgl-ctrl-zoom-in {
+  background-color: rgba(0,0,0,0);
+  border: 0;
+}
+
+.mapboxgl-ctrl-icon.mapboxgl-ctrl-zoom-out {
+  background-color: rgba(0,0,0,0);
+  border: 0;
+}
+
+.mapboxgl-ctrl > button:last-child {
+  display: none;
+}
+
+.mapboxgl-ctrl-top-right .mapboxgl-ctrl {
+  background-color: rgba(0,0,0,0);
+  box-shadow: none;
+}
+
+.selection__panel--bottom {
+  margin-top: 2rem;
+  z-index: 1;
+  margin-bottom: 2.5rem;
+}
