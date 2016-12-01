@@ -33,23 +33,25 @@ class Map extends React.Component {
           }
         },
         {
-          id: 'line',
-          type: 'line',
-          source: 'geojson',
-          paint: {
-            'line-color': '#788'
-          }
-        },
-        {
           id: 'line-blur',
           type: 'line',
           source: 'geojson',
           paint: {
             'line-color': '#bbb',
+            'line-width': 0.75,
             'line-translate': [
-              3,
-              2
+              1,
+              1
             ]
+          }
+        },
+        {
+          id: 'line',
+          type: 'line',
+          source: 'geojson',
+          paint: {
+            'line-color': '#788',
+            'line-width': 0.75
           }
         }]
       }
@@ -81,8 +83,6 @@ class Map extends React.Component {
       src = 'http://10.1.10.181:8000/ne_110m_lakes.geojson'
     } else if (dataSource === 'Rivers') {
       src = 'http://10.1.10.181:8000/ne_10m_rivers.geojson'
-    } else if (dataSource === 'Roads') {
-      src = 'http://10.1.10.181:8000/ne_10m_roads.geojson'
     } else if (dataSource === 'Populated Places') {
       src = 'http://10.1.10.181:8000/ne_110m_populated_places.geojson'
     } else {
@@ -154,15 +154,7 @@ module.exports = Map
 
 // add new prop to map component - onChange as a function to kick over reprojection
 
-// if (dataSource === 'Land') {
-//   src = 'http://10.1.10.181:8000/ne_110m_land.geojson'
-// } else if (dataSource === 'Water') {
-//   src = 'http://10.1.10.181:8000/ne_110m_water.geojson'
-// } else if (dataSource === 'Countries') {
-//   src = 'http://10.1.10.181:8000/ne_110m_admin_0.geojson'
-// } else {
-//   console.log('error will robinson! error!')
-// }
+// Style for points
 
 // {
 //   id: 'point',
@@ -176,4 +168,3 @@ module.exports = Map
 //     'circle-color': 'black'
 //   }
 // },
-

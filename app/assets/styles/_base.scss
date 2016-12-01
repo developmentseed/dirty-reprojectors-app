@@ -98,11 +98,12 @@ footer {
 
 dt {
   font-size: 1.2rem;
-  padding: 1rem 0 1rem 0;
+  padding: 1rem 0 1rem 2rem;
   margin: 2rem 0 1.5rem;
   border-top: 1px solid #444;
   border-bottom: 1px solid #444;
   font-family: 'Poiret One';
+  text-align: left;
 }
 
 .dd__split {
@@ -172,4 +173,35 @@ select {
   margin-top: 2rem;
   z-index: 1;
   margin-bottom: 2.5rem;
+}
+
+.about__panel {
+  z-index: 100;
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0,0,0,0.5);
+}
+
+.about__content {
+  position: absolute;
+  width: 40%;
+  height: 50%;
+  top: 4rem;
+  left: 4rem;
+  background-color: black;
+  color: white;
+  padding: 1rem;
+  pointer-events: none;
+  h2 {
+    font-family: 'Poiret One';
+    font-size: 1.2rem;
+    margin-bottom: 1rem;
+  }
+}
+
+.hidden {
+  transition: all 0.3s;
+  opacity: 0;
+  display: none;
 }

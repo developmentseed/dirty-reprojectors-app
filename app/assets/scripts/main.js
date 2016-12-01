@@ -1,11 +1,13 @@
 'use strict'
 const React = require('React')
 const ReactDOM = require('react-dom')
+const $ = require('jquery')
 
 // import React from 'react'
 // import { render } from 'react-dom'
 
 const Map = require('./map')
+const About = require('./about')
 
 const projections = require('dirty-reprojectors/projections')
 const projectionNames = Object.keys(projections)
@@ -41,6 +43,15 @@ class App extends React.Component {
     this.setState({uploadedData: event.target.value})
   }
 
+  aboutToggle () {
+    const aboutSection = $('.about__panel')
+    if (aboutSection.hasClass('hidden')) {
+      aboutSection.removeClass('hidden')
+    } else {
+      aboutSection.addClass('hidden')
+    }
+  }
+
   render () {
     return <div id='app' style={{
       position: 'absolute',
@@ -50,6 +61,10 @@ class App extends React.Component {
       bottom: 0
     }}>
       <section className='main'>
+        <section className='about__panel hidden' onClick={this.aboutToggle}>
+          <About />
+        </section>
+
         <div className='selection__panel'>
           <header>
             <h1>Dirty Reprojectors</h1>
@@ -65,7 +80,6 @@ class App extends React.Component {
               <option>Water</option>
               <option>Lakes</option>
               <option>Rivers</option>
-              <option>Roads</option>
               <option>Populated Places</option>
             </select>
           </dd>
@@ -94,7 +108,7 @@ class App extends React.Component {
       </section>
       <footer className='footer'>
         <section className='footer__left'>
-          <a href=''>About</a> | <a href=''>Dirty Reprojectors CLI</a>
+          <a onClick={this.aboutToggle}>About</a> | <a href='https://github.com/developmentseed/dirty-reprojectors-app'>Dirty Reprojectors CLI</a>
         </section>
         <section className='footer__right'>
           Made with ♥ by <a href='https://www.developmentseed.org/'>Development Seed</a>
