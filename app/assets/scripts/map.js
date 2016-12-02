@@ -5,11 +5,15 @@ const projections = require('dirty-reprojectors/projections')
 const clone = require('lodash.clonedeep')
 const $ = require('jquery')
 
+import { saveAs } from 'file-saver'
+
 const land = require('../data/ne_110m_land.json')
+
+var downloadme = ''
 
 class Map extends React.Component {
   componentDidMount () {
-    this.downloadData(this.props.data, this.props.uploadedData)
+    this.downloadData(this.props.data, this.props.uploadedData, this.props.projection)
 
     this.map = new mapboxgl.Map({
       container: this.container,
@@ -72,19 +76,19 @@ class Map extends React.Component {
     if (upload !== 'empty') {
       src = upload
     } else if (dataSource === 'Land') {
-      src = 'http://10.1.10.181:8000/ne_110m_land.geojson'
+      src = 'assets/data/ne_110m_land.json'
     } else if (dataSource === 'Water') {
-      src = 'http://10.1.10.181:8000/ne_110m_water.geojson'
+      src = 'assets/data/ne_110m_water.geojson'
     } else if (dataSource === 'Countries') {
-      src = 'http://10.1.10.181:8000/ne_110m_admin_0.geojson'
+      src = 'assets/data/ne_110m_admin_0.geojson'
     } else if (dataSource === 'States, Providences') {
-      src = 'http://10.1.10.181:8000/ne_110m_admin_1.geojson'
+      src = 'assets/data/ne_110m_admin_1.geojson'
     } else if (dataSource === 'Lakes') {
-      src = 'http://10.1.10.181:8000/ne_110m_lakes.geojson'
+      src = 'assets/data/ne_110m_lakes.geojson'
     } else if (dataSource === 'Rivers') {
-      src = 'http://10.1.10.181:8000/ne_10m_rivers.geojson'
+      src = 'assets/data/ne_10m_rivers.geojson'
     } else if (dataSource === 'Populated Places') {
-      src = 'http://10.1.10.181:8000/ne_110m_populated_places.geojson'
+      src = 'assets/data/ne_110m_populated_places.geojson'
     } else {
       console.log('error will robinson! error!')
     }
@@ -95,8 +99,6 @@ class Map extends React.Component {
   }
 
   setMapData (data, upload, projection) {
-    console.log(upload)
-
     if (!this.map.loaded()) { return }
     if (projection) {
       data = clone(data)
@@ -108,21 +110,19 @@ class Map extends React.Component {
         }, feature.geometry)
       }
     }
+
+    downloadme = data
+
     this.map.getSource('geojson').setData(data)
   }
 
-  downloadData (data, uploadedData) {
+  downloadData (data, uploadedData, projection) {
     const downloadButton = $('.button__download')
 
-    this.updateGeojson(data, uploadedData, function (err, data) {
-      if (err) console.log('uh oh')
-      else {
-        var dataStr = 'text/json;charset=utf-8,' + encodeURIComponent(JSON.stringify(data))
-
-        downloadButton.attr('href', dataStr)
-        downloadButton.attr('download', 'projected-data.json')
-        downloadButton.click()
-      }
+    downloadButton.on('click', function () {
+      console.log(downloadme)
+      const blob = new Blob([JSON.stringify(downloadme)], {type: 'application/json;charset=utf-8'})
+      saveAs(blob, 'projected-geography.geojson')
     })
   }
 

@@ -98,7 +98,7 @@ class App extends React.Component {
           </dd>
           <dt>3. Get Projected Geojson</dt>
           <dd>
-            <a href className='button__download'>Download</a>
+            <button className='button__download'>Download</button>
           </dd>
         </div>
       </section>
