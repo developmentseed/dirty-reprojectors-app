@@ -71,7 +71,7 @@ class Map extends React.Component {
   }
 
   updateGeojson (dataSource, upload, callback) {
-    var src = 'http://10.1.10.181:8000/ne_110m_land.geojson'
+    var src = 'assets/data/ne_110m_land.geojson'
 
     if (upload !== 'empty') {
       src = upload

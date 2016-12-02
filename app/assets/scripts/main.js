@@ -71,7 +71,7 @@ class App extends React.Component {
             <p>Create "projected" GeoJSON's for vector tile servers</p>
           </header>
 
-          <dt className='dt__no-top'>1. Choose Your Data</dt>
+          <dt className='dt__no-top'><div className='boldme'>1.</div> Choose Your Data</dt>
           <dd>
             <select value={this.state.dataSource} onChange={this.setGeojson}>
               <option>Land</option>
@@ -88,7 +88,7 @@ class App extends React.Component {
             <input type='file' className='button__upload' value='' onChange={this.uploadData} />
           </dd>
 
-          <dt>2. Choose a Projection</dt>
+          <dt><div className='boldme'>2.</div> Choose a Projection</dt>
           <dd>
             <select value={this.state.projection} onChange={this.setProjection}>
               {projectionNames.map(name => (
@@ -96,7 +96,7 @@ class App extends React.Component {
               ))}
             </select>
           </dd>
-          <dt>3. Get Projected Geojson</dt>
+          <dt><div className='boldme'>3.</div> Get Projected Geojson</dt>
           <dd>
             <button className='button__download'>Download</button>
           </dd>

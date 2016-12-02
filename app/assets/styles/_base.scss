@@ -18,18 +18,17 @@
 }
 
 a {
-  color: gold;
+  color: #66ccbe;
   transition: 0.2s all;
   text-decoration: none;
   &:hover{
-    color: #ce4728;
+    color: #f47761;
   }
   &:active{
     color: red;
   }
 }
 
-// Scss starts here!
 header {
   width: 100%;
   margin-top: 1rem;
@@ -202,7 +201,12 @@ select {
 }
 
 .hidden {
-  transition: all 0.3s;
+  transition: all 0.4s;
   opacity: 0;
-  display: none;
+  pointer-events: none;
+}
+
+.boldme {
+  font-weight: 800;
+  display: inline-block;
 }
