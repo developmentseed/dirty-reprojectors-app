@@ -120,7 +120,6 @@ class Map extends React.Component {
     const downloadButton = $('.button__download')
 
     downloadButton.on('click', function () {
-      console.log(downloadme)
       const blob = new Blob([JSON.stringify(downloadme)], {type: 'application/json;charset=utf-8'})
       saveAs(blob, 'projected-geography.geojson')
     })
