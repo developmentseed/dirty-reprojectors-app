@@ -1,15 +1,16 @@
 'use strict'
-const React = require('React')
-const ReactDOM = require('react-dom')
-const $ = require('jquery')
+import React from 'react'
+import ReactDOM from 'react-dom'
+import $ from 'jquery'
 
-// import React from 'react'
-// import { render } from 'react-dom'
+import config from './config'
+import Map from './map'
+import About from './about'
+import projections from 'dirty-reprojectors/projections'
 
-const Map = require('./map')
-const About = require('./about')
+console.log.apply(console, config.consoleMessage)
+console.log('Environment', config.environment)
 
-const projections = require('dirty-reprojectors/projections')
 const projectionNames = Object.keys(projections)
 
 const app = document.createElement('div')

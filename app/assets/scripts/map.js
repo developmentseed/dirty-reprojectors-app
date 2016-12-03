@@ -1,9 +1,10 @@
-const React = require('react')
-const mapboxgl = require('mapbox-gl')
-const reproject = require('dirty-reprojectors')
-const projections = require('dirty-reprojectors/projections')
-const clone = require('lodash.clonedeep')
-const $ = require('jquery')
+'use strict'
+import React from 'react'
+import mapboxgl from 'mapbox-gl'
+import reproject from 'dirty-reprojectors'
+import projections from 'dirty-reprojectors/projections'
+import clone from 'lodash.clonedeep'
+import $ from 'jquery'
 
 import { saveAs } from 'file-saver'
 
