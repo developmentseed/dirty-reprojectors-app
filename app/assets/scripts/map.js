@@ -38,12 +38,45 @@ class Map extends React.Component {
           }
         },
         {
+          id: 'point',
+          type: 'circle',
+          source: 'geojson',
+          filter: [
+            '==',
+            '$type',
+            'Point'
+          ],
+          paint: {
+            'circle-radius': {
+              'base': 0.4,
+              'stops': [[8, 2], [12, 6]]
+            },
+            'circle-color': '#333333'
+          }
+        },
+        {
+          id: 'polygons',
+          type: 'fill',
+          source: 'geojson',
+          filter: [
+            '==',
+            '$type',
+            'Polygon'
+          ],
+          paint: {
+            'fill-color': '#d5d5d5'
+          }
+        },
+        {
           id: 'line-blur',
           type: 'line',
           source: 'geojson',
           paint: {
             'line-color': '#bbb',
-            'line-width': 0.75,
+            'line-width': {
+              'base': 0.5,
+              'stops': [[2, 0.5], [4, 1], [8, 1.5]]
+            },
             'line-translate': [
               1,
               1
@@ -56,7 +89,10 @@ class Map extends React.Component {
           source: 'geojson',
           paint: {
             'line-color': '#788',
-            'line-width': 0.75
+            'line-width': {
+              'base': 0.5,
+              'stops': [[2, 0.5], [4, 1], [8, 1.5]]
+            }
           }
         }]
       }
@@ -82,8 +118,6 @@ class Map extends React.Component {
       src = 'assets/data/ne_110m_water.geojson'
     } else if (dataSource === 'Countries') {
       src = 'assets/data/ne_110m_admin_0.geojson'
-    } else if (dataSource === 'States, Providences') {
-      src = 'assets/data/ne_110m_admin_1.geojson'
     } else if (dataSource === 'Lakes') {
       src = 'assets/data/ne_110m_lakes.geojson'
     } else if (dataSource === 'Rivers') {
@@ -131,8 +165,10 @@ class Map extends React.Component {
       const self = this
 
       this.updateGeojson(next.data, next.uploadedData, function (err, data) {
-        if (err) console.log('uh oh')
+        if (err) console.log('uh oh!')
         else {
+          console.log(data)
+          console.log(next.uploadedData)
           if (next.uploadedData !== 'empty') {
             self.setMapData(next.uploadedData, next.projection)
           } else {
