@@ -41,7 +41,13 @@ class App extends React.Component {
   }
 
   uploadData (event) {
-    this.setState({uploadedData: event.target.value})
+    var reader = new FileReader()
+    var self = this
+    reader.onload = function (event) {
+      var obj = JSON.parse(event.target.result)
+      self.setState({uploadedData: obj})
+    }
+    reader.readAsText(event.target.files[0])
   }
 
   aboutToggle () {

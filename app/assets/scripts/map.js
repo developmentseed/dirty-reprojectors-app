@@ -67,7 +67,7 @@ class Map extends React.Component {
     this.map.touchZoomRotate.disableRotation()
 
     this.map.on('load', () => {
-      this.setMapData(land, this.props.uploadedData, this.props.projection)
+      this.setMapData(land, this.props.projection)
     })
   }
 
@@ -75,7 +75,7 @@ class Map extends React.Component {
     var src = 'assets/data/ne_110m_land.geojson'
 
     if (upload !== 'empty') {
-      src = upload
+      callback(null, upload)
     } else if (dataSource === 'Land') {
       src = 'assets/data/ne_110m_land.json'
     } else if (dataSource === 'Water') {
@@ -91,7 +91,7 @@ class Map extends React.Component {
     } else if (dataSource === 'Populated Places') {
       src = 'assets/data/ne_110m_populated_places.geojson'
     } else {
-      console.log('error will robinson! error!')
+      console.log('danger arthur robinson! danger!')
     }
 
     $.getJSON(src, function (json) {
@@ -99,7 +99,7 @@ class Map extends React.Component {
     })
   }
 
-  setMapData (data, upload, projection) {
+  setMapData (data, projection) {
     if (!this.map.loaded()) { return }
     if (projection) {
       data = clone(data)
@@ -132,7 +132,13 @@ class Map extends React.Component {
 
       this.updateGeojson(next.data, next.uploadedData, function (err, data) {
         if (err) console.log('uh oh')
-        else self.setMapData(data, next.uploadedData, next.projection)
+        else {
+          if (next.uploadedData !== 'empty') {
+            self.setMapData(next.uploadedData, next.projection)
+          } else {
+            self.setMapData(data, next.projection)
+          }
+        }
       })
     }
   }
