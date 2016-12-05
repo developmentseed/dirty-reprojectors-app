@@ -17,7 +17,6 @@
   "homepage": "https://github.com/dirty-reprojectors-app",
   "scripts": {
     "postinstall": "[ -f app/assets/scripts/config/local.js ] || echo 'module.exports = {}' > app/assets/scripts/config/local.js",
-    "postinstall": "[ -f app/assets/scripts/config/local.js ] || echo 'module.exports = {}' > app/assets/scripts/config/local.js",
     "serve": "DS_ENV=development gulp collecticons && gulp serve",
     "build": "NODE_ENV=production gulp",
     "lint": "eslint app/assets/scripts/ --ext .js",
@@ -66,11 +65,11 @@
     "dirty-reprojectors": "github:developmentseed/dirty-reprojectors#c2e8eab345f81142475970ec15c5b0eb65d09e14",
     "file-saver": "^1.3.3",
     "jquery": "^3.1.1",
-    "lodash.defaultsdeep": "^4.3.5",
     "lodash.clonedeep": "^4.5.0",
+    "lodash.defaultsdeep": "^4.3.5",
     "mapbox-gl": "^0.28.0",
     "react": "^15.3.0",
-    "react-dom": "^15.3.0"
+    "react-dom": "^15.3.0",
   },
   "devDependencies": {
     "ava": "^0.16.0",
