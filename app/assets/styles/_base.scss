@@ -23,10 +23,10 @@ a {
   text-decoration: none;
   cursor: pointer;
   &:hover{
-    color: #F4C08A;
+    color: #ecc250;
   }
   &:active{
-    color: red;
+    color: #da9f00;
   }
 }
 
@@ -101,7 +101,7 @@ dt {
   border: 1px solid #999;
   font-size: 0.9rem;
   max-width: 100%;
-  padding: 0.5rem 1.5rem 0.5rem 1rem;
+  padding: 0.4rem 2rem 0.6rem 1rem;
   transition: 0.2s all;
   border-radius: 5px;
   background-color: rgba(255,255,255,0.125);
@@ -166,10 +166,6 @@ select {
   margin-bottom: 2.5rem;
 }
 
-.about__panel {
-  transition: all 2s linear;
-}
-
 .about__content--backing {
   position: fixed;
   z-index: 100;
@@ -181,7 +177,7 @@ select {
 .about__content--text {
   position: absolute;
   z-index: 101;
-  width: 40%;
+  width: 50%;
   top: 3.25rem;
   left: 1.5rem;
   background-color: black;
@@ -189,11 +185,14 @@ select {
   font-size: 1rem;
   line-height: 1.6rem;
   overflow: scroll;
-  max-height: 60%;
+  max-height: 65%;
   border: 1px solid #555;
   padding: 1.5rem 1.5rem 2rem 1.5rem;
   box-shadow: 0 3px 10px 0px rgba(0,0,0,0.3);
   transition: all 0.4s;
+  a {
+    font-weight: 300;
+  }
   p {
     margin-bottom: 1rem;
   }
@@ -215,8 +214,15 @@ select {
   }
 }
 
+.about__panel {
+  opacity:1;
+  visibility:visible;
+  transition:opacity 0.1s ease 0s, visibility 0.1s linear 0s;
+}
+
 .hidden {
-  visibility: hidden;
+  opacity:0;
+  visibility:hidden;
 }
 
 .boldme {
@@ -259,4 +265,27 @@ select {
   a {
     margin-right: 0.25rem;
   }
+}
+
+@mixin centerCollecticons {
+  margin-left: 0.4rem;
+  display: inline-block;
+  line-height: 1;
+  vertical-align: middle;
+}
+
+.collecticon {
+  @include centerCollecticons;
+}
+
+.button__text {
+  @include centerCollecticons;
+}
+
+.header__text {
+  @include centerCollecticons;  
+}
+
+.footer__text {
+  @include centerCollecticons;
 }
