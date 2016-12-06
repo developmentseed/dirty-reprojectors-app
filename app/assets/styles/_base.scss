@@ -18,11 +18,12 @@
 }
 
 a {
-  color: #66ccbe;
+  color: #f47761; 
   transition: 0.2s all;
   text-decoration: none;
+  cursor: pointer;
   &:hover{
-    color: #f47761;
+    color: #F4C08A;
   }
   &:active{
     color: red;
@@ -31,45 +32,31 @@ a {
 
 header {
   width: 100%;
-  margin-top: 1rem;
-  padding-bottom: 1rem;
+  padding: 1rem 0 0;
+  background-color: black;
   h1 {
     font-size: 1.5rem;
-    margin-bottom: 0.75rem;
     font-family: 'Poiret One';
+    color: white;
+  }
+  h3 {
+    margin-top: 0.5rem;
+    font-weight: 300;
+    font-size: 0.9rem;
+    color: #888;
   }
   p {
     color: #ddd;
     font-size: 0.9rem;
+    margin-top: 1rem;
+    margin-bottom:1rem;
+    font-weight: 300;
   }
 }
 
 body {
   font-family: 'Lato';
   font-weight: 100;
-}
-
-footer {
-  width: 100%;
-  height: 2.4rem;
-  z-index: 1;
-  position: fixed;
-  bottom: 0;
-  background-color: #000;
-  color: white;
-  font-size: 1rem;
-}
-
-.footer__left {
-  margin-top: 0.5rem;
-  margin-left: 2rem;
-  float: left;
-}
-
-.footer__right {
-  margin-top:0.5rem;
-  margin-right: 1rem;
-  float: right;
 }
 
 #app-container {
@@ -90,15 +77,15 @@ footer {
   min-height: 100%;
   position: absolute;
   z-index: 1;
+  color: white;
   background-color: black;
   left: 0;
-  color: white;
 }
 
 dt {
   font-size: 1.2rem;
   padding: 1rem 0 1rem 2rem;
-  margin: 2rem 0 1.5rem;
+  margin: 1.5rem 0 1.5rem;
   border-top: 1px solid #444;
   border-bottom: 1px solid #444;
   font-family: 'Poiret One';
@@ -107,19 +94,20 @@ dt {
 
 .dd__split {
   margin: 0.5rem 0 0.8rem;
-  color: #bbb;
+  color: #888;
 }
 
 @mixin button-style {
-  background-color: rgba(0,0,0,0);
   border: 1px solid #999;
-  padding: 0.75rem 1.5rem;
+  font-size: 0.9rem;
+  max-width: 100%;
+  padding: 0.5rem 1.5rem 0.5rem 1rem;
   transition: 0.2s all;
   border-radius: 5px;
-  background-color: rgba(255,255,255,0.15);
+  background-color: rgba(255,255,255,0.125);
   &:hover {
-    border-color: #555;
-    background-color: rgba(255,255,255,0.25);
+    border-color: #888;
+    background-color: rgba(255,255,255,0.2);
   }
 }
 
@@ -132,17 +120,20 @@ dt {
 }
 
 input {
-  max-width: 200px;
   overflow-wrap: break-word;
 }
 
 select {
   border: 1px solid #999;
+  font-size: 0.9rem;
   transition: 0.2s all;
   height: 2rem;
+  width: 12rem;
+  max-width: 100%;
+  background-color: rgba(255,255,255,0.125);
   &:hover {
     background-color: rgba(255,255,255,0.2);
-    border-color: #555;
+    border-color: #888;
   }
 }
 
@@ -176,23 +167,36 @@ select {
 }
 
 .about__panel {
+  transition: all 2s linear;
+}
+
+.about__content--backing {
+  position: fixed;
   z-index: 100;
-  position: absolute;
   width: 100%;
   height: 100%;
   background-color: rgba(0,0,0,0.5);
 }
 
-.about__content {
+.about__content--text {
   position: absolute;
+  z-index: 101;
   width: 40%;
-  height: 50%;
-  top: 4rem;
-  left: 4rem;
+  top: 3.25rem;
+  left: 1.5rem;
   background-color: black;
-  color: white;
-  padding: 1rem;
-  pointer-events: none;
+  color: #ddd;
+  font-size: 1rem;
+  line-height: 1.6rem;
+  overflow: scroll;
+  max-height: 60%;
+  border: 1px solid #555;
+  padding: 1.5rem 1.5rem 2rem 1.5rem;
+  box-shadow: 0 3px 10px 0px rgba(0,0,0,0.3);
+  transition: all 0.4s;
+  p {
+    margin-bottom: 1rem;
+  }
   h2 {
     font-family: 'Poiret One';
     font-size: 1.2rem;
@@ -200,13 +204,59 @@ select {
   }
 }
 
+.about__exit {
+  position: absolute;
+  right: 1rem;
+  top: 0.6rem;
+  cursor: pointer;
+  transition: 0.2s all;
+  &:hover {
+    color: #bbb;
+  }
+}
+
 .hidden {
-  transition: all 0.4s;
-  opacity: 0;
-  pointer-events: none;
+  visibility: hidden;
 }
 
 .boldme {
   font-weight: 800;
   display: inline-block;
+}
+
+.button__upload--face {
+  position: relative;
+  overflow: hidden;
+  width: 8rem;
+  margin: 0 auto;
+  @include button-style;
+  .button__upload {
+    position: absolute;
+    top: 0;
+    right: 0;
+    margin: 0;
+    padding: 0;
+    font-size: 20px;
+    cursor: pointer;
+    opacity: 0;
+    filter: alpha(opacity=0);
+  }
+}
+
+.button__upload {
+  cursor: pointer;
+  width: 200px;
+  height: 100px;
+}
+
+.selection__panel--footer {
+  border-top: 1px solid #555;
+  margin-top: 2rem;
+  padding: 1rem 0;
+  width: 100%;
+  text-align: center;
+  font-weight: 300;
+  a {
+    margin-right: 0.25rem;
+  }
 }
