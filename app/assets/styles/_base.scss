@@ -17,6 +17,9 @@
   }
 }
 
+/* Base
+========================================================================== */
+
 a {
   color: #f47761; 
   transition: 0.2s all;
@@ -29,6 +32,14 @@ a {
     color: #da9f00;
   }
 }
+
+body {
+  font-family: 'Lato';
+  font-weight: 100;
+}
+
+/* Sections
+========================================================================== */
 
 header {
   width: 100%;
@@ -54,11 +65,6 @@ header {
   }
 }
 
-body {
-  font-family: 'Lato';
-  font-weight: 100;
-}
-
 #app-container {
   width: 100%;
   height: 100%;
@@ -82,6 +88,9 @@ body {
   left: 0;
 }
 
+/* Selection Panel
+========================================================================== */
+
 dt {
   font-size: 1.2rem;
   padding: 1rem 0 1rem 2rem;
@@ -97,67 +106,20 @@ dt {
   color: #888;
 }
 
-@mixin button-style {
-  border: 1px solid #999;
-  font-size: 0.9rem;
-  max-width: 100%;
-  padding: 0.4rem 2rem 0.6rem 1rem;
-  transition: 0.2s all;
-  border-radius: 5px;
-  background-color: rgba(255,255,255,0.125);
-  &:hover {
-    border-color: #888;
-    background-color: rgba(255,255,255,0.2);
-  }
-}
-
-.button__download {
-  color: white;
-  @include button-style;
-  &:hover{
-    color: white;
-  }
-}
-
-input {
-  overflow-wrap: break-word;
-}
-
-select {
-  border: 1px solid #999;
-  font-size: 0.9rem;
-  transition: 0.2s all;
-  height: 2rem;
-  width: 12rem;
-  max-width: 100%;
-  background-color: rgba(255,255,255,0.125);
-  &:hover {
-    background-color: rgba(255,255,255,0.2);
-    border-color: #888;
-  }
-}
-
 .dt__no-top {
   margin-top: 0;
 }
 
-.mapboxgl-ctrl-icon.mapboxgl-ctrl-zoom-in {
-  background-color: rgba(0,0,0,0);
-  border: 0;
-}
-
-.mapboxgl-ctrl-icon.mapboxgl-ctrl-zoom-out {
-  background-color: rgba(0,0,0,0);
-  border: 0;
-}
-
-.mapboxgl-ctrl > button:last-child {
-  display: none;
-}
-
-.mapboxgl-ctrl-top-right .mapboxgl-ctrl {
-  background-color: rgba(0,0,0,0);
-  box-shadow: none;
+.selection__panel--footer {
+  border-top: 1px solid #555;
+  margin-top: 2rem;
+  padding: 1rem 0;
+  width: 100%;
+  text-align: center;
+  font-weight: 300;
+  a {
+    margin-right: 0.25rem;
+  }
 }
 
 .selection__panel--bottom {
@@ -165,6 +127,14 @@ select {
   z-index: 1;
   margin-bottom: 2.5rem;
 }
+
+.boldme {
+  font-weight: 800;
+  display: inline-block;
+}
+
+/* About Modal
+========================================================================== */
 
 .about__content--backing {
   position: fixed;
@@ -225,9 +195,47 @@ select {
   visibility:hidden;
 }
 
-.boldme {
-  font-weight: 800;
-  display: inline-block;
+/* Input Styles
+========================================================================== */
+
+@mixin button-style {
+  border: 1px solid #999;
+  font-size: 0.9rem;
+  max-width: 100%;
+  padding: 0.4rem 2rem 0.6rem 1rem;
+  transition: 0.2s all;
+  border-radius: 5px;
+  background-color: rgba(255,255,255,0.125);
+  &:hover {
+    border-color: #888;
+    background-color: rgba(255,255,255,0.2);
+  }
+}
+
+.button__download {
+  color: white;
+  @include button-style;
+  &:hover{
+    color: white;
+  }
+}
+
+input {
+  overflow-wrap: break-word;
+}
+
+select {
+  border: 1px solid #999;
+  font-size: 0.9rem;
+  transition: 0.2s all;
+  height: 2rem;
+  width: 12rem;
+  max-width: 100%;
+  background-color: rgba(255,255,255,0.125);
+  &:hover {
+    background-color: rgba(255,255,255,0.2);
+    border-color: #888;
+  }
 }
 
 .button__upload--face {
@@ -255,17 +263,8 @@ select {
   height: 100px;
 }
 
-.selection__panel--footer {
-  border-top: 1px solid #555;
-  margin-top: 2rem;
-  padding: 1rem 0;
-  width: 100%;
-  text-align: center;
-  font-weight: 300;
-  a {
-    margin-right: 0.25rem;
-  }
-}
+/* Collecticon Fixes
+========================================================================== */
 
 @mixin centerCollecticons {
   margin-left: 0.4rem;
@@ -289,3 +288,27 @@ select {
 .footer__text {
   @include centerCollecticons;
 }
+
+
+/* Mapbox Overrides
+========================================================================== */
+
+.mapboxgl-ctrl-icon.mapboxgl-ctrl-zoom-in {
+  background-color: rgba(0,0,0,0);
+  border: 0;
+}
+
+.mapboxgl-ctrl-icon.mapboxgl-ctrl-zoom-out {
+  background-color: rgba(0,0,0,0);
+  border: 0;
+}
+
+.mapboxgl-ctrl > button:last-child {
+  display: none;
+}
+
+.mapboxgl-ctrl-top-right .mapboxgl-ctrl {
+  background-color: rgba(0,0,0,0);
+  box-shadow: none;
+}
+
