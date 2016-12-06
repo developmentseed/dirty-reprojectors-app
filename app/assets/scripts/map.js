@@ -74,8 +74,8 @@ class Map extends React.Component {
           paint: {
             'line-color': '#bbb',
             'line-width': {
-              'base': 0.5,
-              'stops': [[2, 0.5], [4, 1], [8, 1.5]]
+              'base': 0.75,
+              'stops': [[2, 0.75], [4, 1.5], [8, 2]]
             },
             'line-translate': [
               1,

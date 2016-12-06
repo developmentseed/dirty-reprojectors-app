@@ -52,11 +52,7 @@ class App extends React.Component {
 
   aboutToggle () {
     const aboutSection = $('.about__panel')
-    if (aboutSection.hasClass('hidden')) {
-      aboutSection.removeClass('hidden')
-    } else {
-      aboutSection.addClass('hidden')
-    }
+    aboutSection.removeClass('hidden')
   }
 
   render () {
@@ -68,13 +64,14 @@ class App extends React.Component {
       bottom: 0
     }}>
       <section className='main'>
-        <section className='about__panel hidden' onClick={this.aboutToggle}>
+        <section className='about__panel hidden'>
           <About />
         </section>
 
         <div className='selection__panel'>
           <header>
             <h1>Dirty Reprojectors</h1>
+            <h3>Created by <a href='https://www.developmentseed.org/'><span className="collecticon collecticon-devseed"></span> Development Seed</a></h3>
             <p>Create "projected" GeoJSON's for vector tile servers</p>
           </header>
 
@@ -83,7 +80,6 @@ class App extends React.Component {
             <select value={this.state.dataSource} onChange={this.setGeojson}>
               <option>Land</option>
               <option>Countries</option>
-              <option>States, Providences</option>
               <option>Water</option>
               <option>Lakes</option>
               <option>Rivers</option>
@@ -91,7 +87,8 @@ class App extends React.Component {
             </select>
           </dd>
           <div className='dd__split'>or</div>
-          <dd>
+          <dd className='button__upload--face'>
+            <span><span className="collecticon collecticon-share"></span>Upload Geojson</span>
             <input type='file' className='button__upload' value='' onChange={this.uploadData} />
           </dd>
 
@@ -105,22 +102,18 @@ class App extends React.Component {
           </dd>
           <dt><div className='boldme'>3.</div> Get Projected Geojson</dt>
           <dd>
-            <button className='button__download'>Download</button>
+            <button className='button__download'><span className="collecticon collecticon-download"></span>Download</button>
           </dd>
+          <footer className='selection__panel--footer'>
+            <a onClick={this.aboutToggle}>About</a> | <a href='https://github.com/developmentseed/dirty-reprojectors-app'><span className="collecticon collecticon-github"></span>
+Dirty Reprojectors CLI</a>
+          </footer>
         </div>
       </section>
 
       <section className='map-land'>
         <Map data={this.state.dataSource} projection={this.state.projection} uploadedData={this.state.uploadedData} />
       </section>
-      <footer className='footer'>
-        <section className='footer__left'>
-          <a onClick={this.aboutToggle}>About</a> | <a href='https://github.com/developmentseed/dirty-reprojectors-app'>Dirty Reprojectors CLI</a>
-        </section>
-        <section className='footer__right'>
-          Made with ♥ by <a href='https://www.developmentseed.org/'>Development Seed</a>
-        </section>
-      </footer>
     </div>
   }
 }
