@@ -119,11 +119,15 @@ class Map extends React.Component {
     } else if (dataSource === 'Countries') {
       src = 'assets/data/ne_110m_admin_0.geojson'
     } else if (dataSource === 'Lakes') {
-      src = 'assets/data/ne_110m_lakes.geojson'
+      src = 'assets/data/ne_50m_lakes.geojson'
     } else if (dataSource === 'Rivers') {
-      src = 'assets/data/ne_10m_rivers.geojson'
+      src = 'assets/data/ne_50m_rivers.geojson'
     } else if (dataSource === 'Populated Places') {
       src = 'assets/data/ne_110m_populated_places.geojson'
+    } else if (dataSource === '15° Graticule') {
+      src = 'assets/data/ne_15_graticule.geojson'
+    } else if (dataSource === 'United States') {
+      src = 'assets/data/ne_50m_united_states.geojson'
     } else {
       console.log('danger arthur robinson! danger!')
     }
@@ -187,6 +191,11 @@ class Map extends React.Component {
         <div className='main-map'
           ref={(el) => { this.container = el }}>
         </div>
+
+        <div className='loader__box'>
+          <div className='loader'></div>
+        </div>
+
       </div>
     )
   }

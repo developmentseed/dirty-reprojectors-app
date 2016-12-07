@@ -81,9 +81,11 @@ class App extends React.Component {
             <select value={this.state.dataSource} onChange={this.setGeojson}>
               <option>Land</option>
               <option>Countries</option>
+              <option>United States</option>
               <option>Water</option>
               <option>Lakes</option>
               <option>Rivers</option>
+              <option>15° Graticule</option>
               <option>Populated Places</option>
             </select>
           </dd>
