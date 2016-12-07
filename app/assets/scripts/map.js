@@ -186,6 +186,7 @@ class Map extends React.Component {
             self.setMapData(data, next.projection, 'geojson')
           }
         }
+        document.querySelector('.loader__box').classList.add('hidden')
       })
       this.setMapData(graticule, next.projection, 'graticule')
     }
@@ -200,7 +201,7 @@ class Map extends React.Component {
           ref={(el) => { this.container = el }}>
         </div>
 
-        <div className='loader__box'>
+        <div className='loader__box hidden'>
           <div className='loader'></div>
         </div>
 
