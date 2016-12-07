@@ -50,10 +50,10 @@ class App extends React.Component {
   }
 
   aboutToggle () {
-    const aboutPanel = document.querySelector('.about__content--backing')
-    const aboutPanel2 = document.querySelector('.about__content--text')
-    aboutPanel.classList.remove('hidden')
-    aboutPanel2.classList.remove('hidden')
+    const aboutPanelBack = document.querySelector('.about__content--backing')
+    const aboutPanelText = document.querySelector('.about__content--text')
+    aboutPanelBack.classList.remove('hidden')
+    aboutPanelText.classList.remove('hidden')
   }
 
   render () {
@@ -72,7 +72,7 @@ class App extends React.Component {
         <div className='selection__panel'>
           <header>
             <h1>Dirty Reprojectors</h1>
-            <h3><span className='header__text'>Created by </span><a href='https://www.developmentseed.org/'><span className="collecticon collecticon-devseed"></span><span className='header__text'>Development Seed</span></a></h3>
+            <h3><span className='header__text'>Created by </span><a href='https://www.developmentseed.org/' target='_blank'><span className="collecticon collecticon-devseed"></span><span className='header__text'>Development Seed</span></a></h3>
             <p>Create "projected" GeoJSON's for vector tile servers</p>
           </header>
 
@@ -106,7 +106,7 @@ class App extends React.Component {
             <button className='button__download'><span className='collecticon collecticon-download'></span><span className='button__text'>Download</span></button>
           </dd>
           <footer className='selection__panel--footer'>
-            <span className='button__text'><a onClick={this.aboutToggle}>About</a> | </span><a href='https://github.com/developmentseed/dirty-reprojectors-app'><span className="collecticon collecticon-github"></span><span className='button__text'>Dirty Reprojectors CLI</span></a>
+            <span className='button__text'><a onClick={this.aboutToggle}>About</a> | </span><a href='https://github.com/developmentseed/dirty-reprojectors-app' target='_blank'><span className="collecticon collecticon-github"></span><span className='button__text'>Dirty Reprojectors CLI</span></a>
           </footer>
         </div>
       </section>
