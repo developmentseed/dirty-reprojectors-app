@@ -10,3 +10,7 @@
 
 
 /* Team */
+
+Anand Thakker
+Derek Lieu
+Dylan Moriarty
