@@ -80,12 +80,12 @@ class App extends React.Component {
           <header>
             <h1>Dirty Reprojectors</h1>
             <h3><span className='header__text'>Created by </span><a href='https://www.developmentseed.org/' target='_blank'><span className="collecticon collecticon-devseed"></span><span className='header__text'>Development Seed</span></a></h3>
-            <p>Create "projected" GeoJSON's for vector tile servers</p>
+            <p>Getting projected data into vector tiles is a pain. Here you can upload a geojson, project it, and download a projected version of it that can be used in Mapbox Studio.</p>
           </header>
 
           <dt className='dt__no-top'><div className='boldme'>1.</div> Choose Your Data</dt>
           <dd>
-            <select value={this.state.dataSource} onChange={this.setGeojson}>
+            <select className='button__data' value={this.state.dataSource} onChange={this.setGeojson}>
               <option>Land</option>
               <option>Countries</option>
               <option>United States</option>
@@ -95,7 +95,6 @@ class App extends React.Component {
               <option>Populated Places</option>
             </select>
           </dd>
-          <div className='dd__split'>or</div>
           <dd className='button__upload--face'>
             <span><span className="collecticon collecticon-share"></span><span className='button__text'>Upload Geojson</span></span>
             <input type='file' className='button__upload' value='' onChange={this.uploadData} />
@@ -109,7 +108,7 @@ class App extends React.Component {
               ))}
             </select>
           </dd>
-          <dt><div className='boldme'>3.</div> Get Projected Geojson</dt>
+          <dt><div className='boldme'>3.</div> Download Projected Geojson</dt>
           <dd>
             <button className='button__download'><span className='collecticon collecticon-download'></span><span className='button__text'>Download</span></button>
           </dd>
