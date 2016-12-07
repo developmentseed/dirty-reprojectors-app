@@ -5,6 +5,7 @@ env:
   global:
   - CXX=g++-4.8
   - DEPLOY_BRANCH=develop
+  - GH_REF=github.com/developmentseed/dirty-reprojectors-app.git
   - secure: HoItby5QkoPSimqCsEB4IeC1fcXeJgBCi/iMkyed2dvgZNTADQBvpKca5ZSxC4A98RsDoV41lvWa4nmdqV6Cjkx12/1iknc8Om5k7KGQuCigU125abAhhvTFbDXszXsfiMBzU1Q6Zc5H8yzFOY5YHs3zMjoEihoIXNzbZCuVufAbgvQrrMpNV4wkEjKUu6nU2UEPGnou+y9B6MNdul7WnBwf5mu8vfi5YHtIOVxw8JEE64E0//w2BohdtbMW9vPvrREw0TUSU5ukcvJBzf2QGL1pVMLjZFWiO6ESjomo1SZnDtcEAT18sQu2MeHtsfX8/Q8BO+mkMmbEnRVqDGR4e/rgG5jyK3VRTac+sEq0DeYkg2ZxpcELcWDsRQFukRVR3h0WUeVfOA5m12Q0ouNb/2I5Wsn5sIa9NpbAkm54QGE1nxfb5tN3rploNlzyRF0tfLfrHxbCuIIeJx8XmuLYtkwFOAi/wwVYx9E2qV0XvUbDrPDIN352PBq5dR5Y8o/QG+9l22oNajuJIjmbfak7UuFcgOkMZQrsKBIhqBx/wuugjYWoVl41Y6uFekTFro8Y/p95tUSTY/UYd83gQV/PKLB0kem9Amvj3WB6xOsis+owvjnuiWhumjpau7aOLponTArqvGpkjdCmz/ko+1EWcKCQRP6R4F/r54OCIjNhjL4=
 addons:
   apt:
