@@ -85,7 +85,6 @@ class App extends React.Component {
               <option>Water</option>
               <option>Lakes</option>
               <option>Rivers</option>
-              <option>15° Graticule</option>
               <option>Populated Places</option>
             </select>
           </dd>

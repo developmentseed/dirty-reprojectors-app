@@ -9,6 +9,7 @@ import $ from 'jquery'
 import { saveAs } from 'file-saver'
 
 const land = require('../data/ne_110m_land.json')
+const graticule = require('../data/ne_15_graticule.json')
 
 var downloadme = ''
 
@@ -25,9 +26,9 @@ class Map extends React.Component {
             type: 'geojson',
             data: { type: 'FeatureCollection', features: [] }
           },
-          land: {
+          graticule: {
             type: 'geojson',
-            data: land
+            data: graticule
           }
         },
         layers: [{
@@ -35,6 +36,15 @@ class Map extends React.Component {
           type: 'background',
           paint: {
             'background-color': '#dedede'
+          }
+        },
+        {
+          id: 'graticule',
+          type: 'line',
+          source: 'graticule',
+          paint: {
+            'line-color': '#eee',
+            'line-width': 1
           }
         },
         {
@@ -103,7 +113,8 @@ class Map extends React.Component {
     this.map.touchZoomRotate.disableRotation()
 
     this.map.on('load', () => {
-      this.setMapData(land, this.props.projection)
+      this.setMapData(land, this.props.projection, 'geojson')
+      this.setMapData(graticule, this.props.projection, 'graticule')
     })
   }
 
@@ -124,8 +135,6 @@ class Map extends React.Component {
       src = 'assets/data/ne_50m_rivers.geojson'
     } else if (dataSource === 'Populated Places') {
       src = 'assets/data/ne_110m_populated_places.geojson'
-    } else if (dataSource === '15° Graticule') {
-      src = 'assets/data/ne_15_graticule.geojson'
     } else if (dataSource === 'United States') {
       src = 'assets/data/ne_50m_united_states.geojson'
     } else {
@@ -137,7 +146,7 @@ class Map extends React.Component {
     })
   }
 
-  setMapData (data, projection) {
+  setMapData (data, projection, source) {
     if (!this.map.loaded()) { return }
     if (projection) {
       data = clone(data)
@@ -152,7 +161,7 @@ class Map extends React.Component {
 
     downloadme = data
 
-    this.map.getSource('geojson').setData(data)
+    this.map.getSource(source).setData(data)
   }
 
   downloadData (data, uploadedData, projection) {
@@ -171,15 +180,14 @@ class Map extends React.Component {
       this.updateGeojson(next.data, next.uploadedData, function (err, data) {
         if (err) console.log('uh oh!')
         else {
-          console.log(data)
-          console.log(next.uploadedData)
           if (next.uploadedData !== 'empty') {
-            self.setMapData(next.uploadedData, next.projection)
+            self.setMapData(next.uploadedData, next.projection, 'geojson')
           } else {
-            self.setMapData(data, next.projection)
+            self.setMapData(data, next.projection, 'geojson')
           }
         }
       })
+      this.setMapData(graticule, next.projection, 'graticule')
     }
   }
 
