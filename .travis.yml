@@ -5,7 +5,7 @@ env:
   global:
   - CXX=g++-4.8
   - DEPLOY_BRANCH=develop
-  - secure: "CYDo49Ac4/IjNtee1JSabA0zf47xZ7lWJyM7YQZu9pkaoRj/j8NHKsg3YaCPpRZEGWmt7TVTSVdgoZviyEi0OMzaEZsudGW2aYAoogJ4cOMPBUyc9T5Y3j6dhI+pobf8IOuo1BMtAgIqgNyNDS5JdtWEvp8GQMg2vUOkKc/k8tLfYzmCfdBPz5rp5tRZ9FcR7STwFUL28ipD3r32i3pNRlD4idzdV0/UwvZAXAV75Cv1W/24vWvJhLJmBvpG/LgLpyfsjRiHKyZo4aNyy6AY9n0gwIC7KWAejkofvDL/ZiFLm6doWDw4NgdX0otgqdVX5IVCbdxpREWG8+KMAkpS8jcUcUD3FUCrRdBLtGcRbTfaD2Qn3nzAEnobaZsFkfxXtqa/8Ww3TomS39ZHKv7jDKjWXqo5xQ65U9lvwDvYe6YPR9PqBO1pqv8yqekUcAoznYRj/OqLB6w8f5bjNN8nycZCSQgpTm32CarlN5SsaNFsb5vZbY89vBm1acsVcvi9u2D0QM2gaQPqwPVqNioNfVmdmJD9K3NLueElr8laBv+7Sk1ITrBf7OqWWbIIjXuo1ZXAlowK2ZvWbCbTQxj2+GPH6VpO9ui2Y9cFuBDkIgovNaGib1y/+/mivSe+DD6WOHB4rqwydf2WOk2GvXRvOBcuEBvfiwJoyiZhK9tiUfI="
+  - secure: HoItby5QkoPSimqCsEB4IeC1fcXeJgBCi/iMkyed2dvgZNTADQBvpKca5ZSxC4A98RsDoV41lvWa4nmdqV6Cjkx12/1iknc8Om5k7KGQuCigU125abAhhvTFbDXszXsfiMBzU1Q6Zc5H8yzFOY5YHs3zMjoEihoIXNzbZCuVufAbgvQrrMpNV4wkEjKUu6nU2UEPGnou+y9B6MNdul7WnBwf5mu8vfi5YHtIOVxw8JEE64E0//w2BohdtbMW9vPvrREw0TUSU5ukcvJBzf2QGL1pVMLjZFWiO6ESjomo1SZnDtcEAT18sQu2MeHtsfX8/Q8BO+mkMmbEnRVqDGR4e/rgG5jyK3VRTac+sEq0DeYkg2ZxpcELcWDsRQFukRVR3h0WUeVfOA5m12Q0ouNb/2I5Wsn5sIa9NpbAkm54QGE1nxfb5tN3rploNlzyRF0tfLfrHxbCuIIeJx8XmuLYtkwFOAi/wwVYx9E2qV0XvUbDrPDIN352PBq5dR5Y8o/QG+9l22oNajuJIjmbfak7UuFcgOkMZQrsKBIhqBx/wuugjYWoVl41Y6uFekTFro8Y/p95tUSTY/UYd83gQV/PKLB0kem9Amvj3WB6xOsis+owvjnuiWhumjpau7aOLponTArqvGpkjdCmz/ko+1EWcKCQRP6R4F/r54OCIjNhjL4=
 addons:
   apt:
     sources:
@@ -20,13 +20,13 @@ before_install:
 - chmod +x ./.build_scripts/deploy.sh
 - chmod +x ./.build_scripts/lint.sh
 before_script:
-- ./.build_scripts/lint.sh
+- "./.build_scripts/lint.sh"
 - npm test
 script:
 - npm run build
 deploy:
   provider: script
   skip_cleanup: true
-  script: .build_scripts/deploy.sh
+  script: ".build_scripts/deploy.sh"
   on:
     branch: "${DEPLOY_BRANCH}"
