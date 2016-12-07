@@ -113,7 +113,7 @@ class App extends React.Component {
             <button className='button__download'><span className='collecticon collecticon-download'></span><span className='button__text'>Download</span></button>
           </dd>
           <footer className='selection__panel--footer'>
-            <span className='button__text'><a onClick={this.aboutToggle}>About</a> | </span><a href='https://github.com/developmentseed/dirty-reprojectors-app' target='_blank'><span className="collecticon collecticon-github"></span><span className='button__text'>Dirty Reprojectors CLI</span></a>
+            <span className='button__text'><a onClick={this.aboutToggle}>About</a> | </span><a href='https://github.com/developmentseed/dirty-reprojectors' target='_blank'><span className="collecticon collecticon-github"></span><span className='button__text'>Dirty Reprojectors CLI</span></a>
           </footer>
         </div>
       </section>
