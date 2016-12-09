@@ -16,10 +16,10 @@ var downloadme = ''
 class Map extends React.Component {
 
   constructor (props) {
-    super(props);
+    super(props)
     this.state = {
       loading: props.loading
-    };
+    }
   }
 
   componentDidMount () {
@@ -194,7 +194,7 @@ class Map extends React.Component {
             self.setMapData(data, next.projection, 'geojson')
           }
         }
-        self.setState({ loading: false });
+        self.setState({ loading: false })
       })
       this.setMapData(graticule, next.projection, 'graticule')
     }
@@ -202,7 +202,7 @@ class Map extends React.Component {
     if (next.loading !== this.state.loading) {
       this.setState({
         loading: next.loading
-      });
+      })
     }
   }
 
@@ -218,7 +218,7 @@ class Map extends React.Component {
             <div className='loader__box'>
               <div className='loader'></div>
             </div>
-          ): null}
+          ) : null}
         </div>
 
       </div>

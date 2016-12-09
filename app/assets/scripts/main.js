@@ -51,17 +51,15 @@ class App extends React.Component {
     var reader = new FileReader()
     var self = this
 
-    this.setState({ loading: true });
-
+    this.setState({ loading: true })
     reader.onload = function (event) {
       try {
         var obj = JSON.parse(event.target.result)
-      }
-      catch (e) {
+      } catch (e) {
         return self.setState({
           uploadError: true,
           loading: false
-        });
+        })
       }
       self.setState({
         uploadedData: obj,
