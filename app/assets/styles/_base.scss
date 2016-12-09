@@ -3,6 +3,8 @@ $border-light: 1px solid #999;
 
 $error: red;
 
+$normal-weight: 400;
+
 // IE < 10
 // Don't delete.
 .lt-ie10 {
@@ -40,7 +42,7 @@ a {
 
 body {
   font-family: 'Lato';
-  font-weight: 100;
+  font-weight: $normal-weight;
 }
 
 /* Sections
@@ -57,7 +59,6 @@ header {
   h3 {
     margin-top: 0.5rem;
     padding-bottom: 1rem;
-    font-weight: 300;
     font-size: 0.9rem;
     color: #888;
   }
@@ -66,7 +67,6 @@ header {
 .header__description {
   color: #ddd;
   margin: 1rem 2rem 1rem;
-  font-weight: 100;
   line-height: 1.5em;
 }
 
@@ -109,7 +109,6 @@ dt {
   padding: 1rem 0;
   margin: 1rem 0 0.25rem;
   font-family: 'Lato';
-  font-weight: 300;
   color: #ddd;
 }
 
@@ -125,7 +124,6 @@ dt {
   padding: 1rem 0;
   width: 100%;
   text-align: center;
-  font-weight: 300;
   background-color: black;
   a {
     margin-right: 0.25rem;
@@ -141,6 +139,10 @@ dt {
 .boldme {
   font-weight: 800;
   display: inline-block;
+}
+
+option {
+  color: black;
 }
 
 /* About Modal
@@ -168,9 +170,6 @@ dt {
   padding: 1.5rem 1.5rem 2rem 1.5rem;
   box-shadow: 0 3px 10px 0px rgba(0,0,0,0.3);
   transition: all 0.4s;
-  a {
-    font-weight: 300;
-  }
   p {
     margin-bottom: 1rem;
   }
