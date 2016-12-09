@@ -14,6 +14,14 @@ const graticule = require('../data/ne_15_graticule.json')
 var downloadme = ''
 
 class Map extends React.Component {
+
+  constructor (props) {
+    super(props);
+    this.state = {
+      loading: props.loading
+    };
+  }
+
   componentDidMount () {
     this.downloadData(this.props.data, this.props.uploadedData, this.props.projection)
 
@@ -186,9 +194,15 @@ class Map extends React.Component {
             self.setMapData(data, next.projection, 'geojson')
           }
         }
-        document.querySelector('.loader__box').classList.add('hidden')
+        self.setState({ loading: false });
       })
       this.setMapData(graticule, next.projection, 'graticule')
+    }
+
+    if (next.loading !== this.state.loading) {
+      this.setState({
+        loading: next.loading
+      });
     }
   }
 
@@ -201,9 +215,11 @@ class Map extends React.Component {
           ref={(el) => { this.container = el }}>
         </div>
 
-        <div className='loader__box hidden'>
-          <div className='loader'></div>
-        </div>
+        {this.state.loading ? (
+          <div className='loader__box'>
+            <div className='loader'></div>
+          </div>
+        ): null}
 
       </div>
     )

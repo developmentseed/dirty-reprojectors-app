@@ -22,7 +22,8 @@ class App extends React.Component {
       projection: 'albers',
       dataSource: 'Land',
       uploadedData: 'empty',
-      uploadError: null
+      uploadError: null,
+      loading: false
     }
     this.setProjection = this.setProjection.bind(this)
     this.setGeojson = this.setGeojson.bind(this)
@@ -30,20 +31,19 @@ class App extends React.Component {
   }
 
   setProjection (event) {
-    document.querySelector('.loader__box').classList.remove('hidden')
     this.setState({
       projection: event.target.value,
-      uploadError: false
+      uploadError: false,
+      loading: true
     })
   }
 
   setGeojson (event) {
-    document.querySelector('.loader__box').classList.remove('hidden')
-
     this.setState({
       dataSource: event.target.value,
       uploadedData: 'empty',
-      uploadError: false
+      uploadError: false,
+      loading: true
     })
   }
 
@@ -51,18 +51,22 @@ class App extends React.Component {
     var reader = new FileReader()
     var self = this
 
-    document.querySelector('.loader__box').classList.remove('hidden')
+    this.setState({ loading: true });
 
     reader.onload = function (event) {
       try {
         var obj = JSON.parse(event.target.result)
       }
       catch (e) {
-        return self.setState({uploadError: true});
+        return self.setState({
+          uploadError: true,
+          loading: false
+        });
       }
       self.setState({
         uploadedData: obj,
-        uploadError: false
+        uploadError: false,
+        loading: false
       })
     }
     reader.readAsText(event.target.files[0])
@@ -138,7 +142,7 @@ class App extends React.Component {
       </section>
 
       <section className='map-land'>
-        <Map data={this.state.dataSource} projection={this.state.projection} uploadedData={this.state.uploadedData} />
+        <Map data={this.state.dataSource} projection={this.state.projection} uploadedData={this.state.uploadedData} loading={this.state.loading} />
       </section>
     </div>
   }
