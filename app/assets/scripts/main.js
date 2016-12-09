@@ -31,7 +31,10 @@ class App extends React.Component {
 
   setProjection (event) {
     document.querySelector('.loader__box').classList.remove('hidden')
-    this.setState({projection: event.target.value})
+    this.setState({
+      projection: event.target.value,
+      uploadError: false
+    })
   }
 
   setGeojson (event) {
@@ -39,7 +42,8 @@ class App extends React.Component {
 
     this.setState({
       dataSource: event.target.value,
-      uploadedData: 'empty'
+      uploadedData: 'empty',
+      uploadError: false
     })
   }
 
@@ -56,7 +60,10 @@ class App extends React.Component {
       catch (e) {
         return self.setState({uploadError: true});
       }
-      self.setState({uploadedData: obj})
+      self.setState({
+        uploadedData: obj,
+        uploadError: false
+      })
     }
     reader.readAsText(event.target.files[0])
   }
