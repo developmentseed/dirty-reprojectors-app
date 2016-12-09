@@ -21,7 +21,8 @@ class App extends React.Component {
     this.state = {
       projection: 'albers',
       dataSource: 'Land',
-      uploadedData: 'empty'
+      uploadedData: 'empty',
+      uploadError: null
     }
     this.setProjection = this.setProjection.bind(this)
     this.setGeojson = this.setGeojson.bind(this)
@@ -30,7 +31,6 @@ class App extends React.Component {
 
   setProjection (event) {
     document.querySelector('.loader__box').classList.remove('hidden')
-
     this.setState({projection: event.target.value})
   }
 
@@ -50,7 +50,12 @@ class App extends React.Component {
     document.querySelector('.loader__box').classList.remove('hidden')
 
     reader.onload = function (event) {
-      var obj = JSON.parse(event.target.result)
+      try {
+        var obj = JSON.parse(event.target.result)
+      }
+      catch (e) {
+        return self.setState({uploadError: true});
+      }
       self.setState({uploadedData: obj})
     }
     reader.readAsText(event.target.files[0])
@@ -80,38 +85,45 @@ class App extends React.Component {
           <header>
             <h1>Dirty Reprojectors</h1>
             <h3><span className='header__text'>Created by </span><a href='https://www.developmentseed.org/' target='_blank'><span className="collecticon collecticon-devseed"></span><span className='header__text'>Development Seed</span></a></h3>
-            <p>Getting projected data into vector tiles is a pain. Here you can upload a geojson, project it, and download a projected version of it that can be used in Mapbox Studio.</p>
+            <div className='header__divider'>
+              <p className='header__description'>Getting projected data into vector tiles is a pain. Here you can upload a geojson, project it, and download a projected version of it that can be used in Mapbox Studio.</p>
+            </div>
           </header>
 
-          <dt className='dt__no-top'><div className='boldme'>1.</div> Choose Your Data</dt>
-          <dd>
-            <select className='button__data' value={this.state.dataSource} onChange={this.setGeojson}>
-              <option>Land</option>
-              <option>Countries</option>
-              <option>United States</option>
-              <option>Water</option>
-              <option>Lakes</option>
-              <option>Rivers</option>
-              <option>Populated Places</option>
-            </select>
-          </dd>
-          <dd className='button__upload--face'>
-            <span><span className="collecticon collecticon-share"></span><span className='button__text'>Upload Geojson</span></span>
-            <input type='file' className='button__upload' value='' onChange={this.uploadData} />
-          </dd>
+          <div className='selection'>
+            <dt className='dt__no-top'><div className='boldme'>1.</div> Choose Your Data</dt>
+            <dd>
+              <select className='button__data' value={this.state.dataSource} onChange={this.setGeojson}>
+                <option>Land</option>
+                <option>Countries</option>
+                <option>United States</option>
+                <option>Water</option>
+                <option>Lakes</option>
+                <option>Rivers</option>
+                <option>Populated Places</option>
+              </select>
+            </dd>
+            <dd className='button__upload--face'>
+              <span><span className="collecticon collecticon-share"></span><span className='button__text'>Upload Geojson</span></span>
+              <input type='file' className='button__upload' value='' onChange={this.uploadData} />
+            </dd>
+            {this.state.uploadError ? (
+              <label className='button__upload--error'>Please upload valid geojson only!</label>
+            ) : null}
 
-          <dt><div className='boldme'>2.</div> Choose a Projection</dt>
-          <dd>
-            <select value={this.state.projection} onChange={this.setProjection}>
-              {projectionNames.map(name => (
-                <option key={name} value={name}>{name}</option>
-              ))}
-            </select>
-          </dd>
-          <dt><div className='boldme'>3.</div> Download Projected Geojson</dt>
-          <dd>
-            <button className='button__download'><span className='collecticon collecticon-download'></span><span className='button__text'>Download</span></button>
-          </dd>
+            <dt><div className='boldme'>2.</div> Choose a Projection</dt>
+            <dd>
+              <select value={this.state.projection} onChange={this.setProjection}>
+                {projectionNames.map(name => (
+                  <option key={name} value={name}>{name}</option>
+                ))}
+              </select>
+            </dd>
+            <dt><div className='boldme'>3.</div> Download Projected Geojson</dt>
+            <dd>
+              <button className='button__download'><span className='collecticon collecticon-download'></span><span className='button__text'>Download</span></button>
+            </dd>
+          </div>
           <footer className='selection__panel--footer'>
             <span className='button__text'><a onClick={this.aboutToggle}>About</a> | </span><a href='https://github.com/developmentseed/dirty-reprojectors' target='_blank'><span className="collecticon collecticon-github"></span><span className='button__text'>Dirty Reprojectors CLI</span></a>
           </footer>

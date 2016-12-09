@@ -1,3 +1,8 @@
+$border: 1px solid #555;
+$border-light: 1px solid #999;
+
+$error: red;
+
 // IE < 10
 // Don't delete.
 .lt-ie10 {
@@ -42,9 +47,8 @@ body {
 ========================================================================== */
 
 header {
-  width: 100%;
   padding: 1rem 0 0;
-  background-color: black;
+  h1, h3 { text-align: center; }
   h1 {
     font-size: 1.5rem;
     font-family: 'Poiret One';
@@ -56,16 +60,19 @@ header {
     font-weight: 300;
     font-size: 0.9rem;
     color: #888;
-    border-bottom: 1px solid #444;
   }
-  p {
-    color: #ddd;
-    font-size: 1rem;
-    margin: 1rem 2rem 1rem;
-    font-weight: 100;
-    text-align: left;
-    line-height: 1.5em;
-  }
+}
+
+.header__description {
+  color: #ddd;
+  margin: 1rem 2rem 1rem;
+  font-weight: 100;
+  line-height: 1.5em;
+}
+
+.header__divider {
+  border-top: $border;
+  border-bottom: $border;
 }
 
 #app-container {
@@ -81,43 +88,39 @@ header {
 }
 
 .selection__panel {
-  text-align: center;
   width: 30%;
-  min-height: 100%;
+  height: 100%;
   position: absolute;
   z-index: 1;
   color: white;
   background-color: black;
-  left: 0;
 }
 
 /* Selection Panel
 ========================================================================== */
 
+.selection {
+  margin-left: 2rem;
+  margin-right: 2rem;
+  text-align: center;
+}
+
 dt {
-  font-size: 1rem;
-  padding: 1rem 0 1rem 2rem;
+  padding: 1rem 0;
   margin: 1rem 0 0.25rem;
   font-family: 'Lato';
   font-weight: 300;
   color: #ddd;
-  text-align: left;
-}
-
-dd {
-  text-align: left;
-  margin-left: 2rem;
 }
 
 .dt__no-top {
   padding-top: 1.25rem;
-  border-top: 1px solid #555;
 }
 
 .selection__panel--footer {
   position:absolute;
   bottom: 0;
-  border-top: 1px solid #555;
+  border-top: $border;
   margin-top: 2rem;
   padding: 1rem 0;
   width: 100%;
@@ -159,10 +162,9 @@ dd {
   margin: 0 auto;
   background-color: black;
   color: #ddd;
-  font-size: 1rem;
   line-height: 1.6rem;
   max-height: 65%;
-  border: 1px solid #555;
+  border: $border;
   padding: 1.5rem 1.5rem 2rem 1.5rem;
   box-shadow: 0 3px 10px 0px rgba(0,0,0,0.3);
   transition: all 0.4s;
@@ -206,10 +208,9 @@ dd {
 ========================================================================== */
 
 @mixin button-style {
-  border: 1px solid #999;
+  border: $border-light;
   font-size: 0.9rem;
   width: 13rem;
-  max-width: 100%;
   padding: 0.4rem 2rem 0.6rem 1rem;
   transition: 0.2s all;
   border-radius: 5px;
@@ -220,21 +221,10 @@ dd {
   }
 }
 
-.button__download {
-  color: white;
-  margin-bottom: 5rem;
-  @include button-style;
-  &:hover{
-    color: white;
-  }
-}
-
-input {
-  overflow-wrap: break-word;
-}
+.button__download { @include button-style; }
 
 select {
-  border: 1px solid #999;
+  border: $border-light;
   font-size: 0.9rem;
   transition: 0.2s all;
   height: 2rem;
@@ -251,24 +241,28 @@ select {
   position: relative;
   overflow: hidden;
   @include button-style;
-  text-align: center;
   width: 10rem;
-  .button__upload {
-    position: absolute;
-    top: 0;
-    right: 0;
-    margin: 0;
-    padding: 0;
-    font-size: 20px;
-    cursor: pointer;
-    opacity: 0;
-    filter: alpha(opacity=0);
-  }
+  margin: 0 auto;
+}
+
+.button__upload {
+  opacity: 0;
+  cursor: pointer;
+  width: 100%;
+  height: 2rem;
+  position: absolute;
+  left: 0;
+  top: 0;
 }
 
 .button__upload {
   cursor: pointer;
-  height: 100px;
+}
+
+.button__upload--error {
+  color: $error;
+  display: block;
+  padding-top: 0.5rem;
 }
 
 .button__data {
