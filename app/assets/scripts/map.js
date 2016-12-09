@@ -14,6 +14,14 @@ const graticule = require('../data/ne_15_graticule.json')
 var downloadme = ''
 
 class Map extends React.Component {
+
+  constructor (props) {
+    super(props)
+    this.state = {
+      loading: props.loading
+    }
+  }
+
   componentDidMount () {
     this.downloadData(this.props.data, this.props.uploadedData, this.props.projection)
 
@@ -186,9 +194,15 @@ class Map extends React.Component {
             self.setMapData(data, next.projection, 'geojson')
           }
         }
-        document.querySelector('.loader__box').classList.add('hidden')
+        self.setState({ loading: false })
       })
       this.setMapData(graticule, next.projection, 'graticule')
+    }
+
+    if (next.loading !== this.state.loading) {
+      this.setState({
+        loading: next.loading
+      })
     }
   }
 
@@ -199,10 +213,12 @@ class Map extends React.Component {
       }, this.props.style)}>
         <div className='main-map'
           ref={(el) => { this.container = el }}>
-        </div>
 
-        <div className='loader__box hidden'>
-          <div className='loader'></div>
+          {this.state.loading ? (
+            <div className='loader__box'>
+              <div className='loader'></div>
+            </div>
+          ) : null}
         </div>
 
       </div>
@@ -211,20 +227,3 @@ class Map extends React.Component {
 }
 
 module.exports = Map
-
-// add new prop to map component - onChange as a function to kick over reprojection
-
-// Style for points
-
-// {
-//   id: 'point',
-//   type: 'circle',
-//   source: 'geojson',
-//   paint: {
-//     'circle-radius': {
-//       'base': 0.8,
-//       'stops': [[8, 2], [12, 6]]
-//     },
-//     'circle-color': 'black'
-//   }
-// },
