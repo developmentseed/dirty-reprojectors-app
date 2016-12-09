@@ -213,13 +213,13 @@ class Map extends React.Component {
       }, this.props.style)}>
         <div className='main-map'
           ref={(el) => { this.container = el }}>
-        </div>
 
-        {this.state.loading ? (
-          <div className='loader__box'>
-            <div className='loader'></div>
-          </div>
-        ): null}
+          {this.state.loading ? (
+            <div className='loader__box'>
+              <div className='loader'></div>
+            </div>
+          ): null}
+        </div>
 
       </div>
     )
@@ -227,20 +227,3 @@ class Map extends React.Component {
 }
 
 module.exports = Map
-
-// add new prop to map component - onChange as a function to kick over reprojection
-
-// Style for points
-
-// {
-//   id: 'point',
-//   type: 'circle',
-//   source: 'geojson',
-//   paint: {
-//     'circle-radius': {
-//       'base': 0.8,
-//       'stops': [[8, 2], [12, 6]]
-//     },
-//     'circle-color': 'black'
-//   }
-// },

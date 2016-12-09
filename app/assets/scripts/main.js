@@ -142,7 +142,7 @@ class App extends React.Component {
         </div>
       </section>
 
-      <section className='map-land'>
+      <section className='map__container'>
         <Map data={this.state.dataSource} projection={this.state.projection} uploadedData={this.state.uploadedData} loading={this.state.loading} />
       </section>
 
