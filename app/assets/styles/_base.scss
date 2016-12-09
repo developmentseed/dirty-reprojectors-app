@@ -21,7 +21,7 @@
 ========================================================================== */
 
 a {
-  color: #f47761; 
+  color: #f47761;
   transition: 0.2s all;
   text-decoration: none;
   cursor: pointer;
@@ -161,7 +161,6 @@ dd {
   color: #ddd;
   font-size: 1rem;
   line-height: 1.6rem;
-  overflow: scroll;
   max-height: 65%;
   border: 1px solid #555;
   padding: 1.5rem 1.5rem 2rem 1.5rem;
@@ -295,7 +294,7 @@ select {
 }
 
 .header__text {
-  @include centerCollecticons;  
+  @include centerCollecticons;
 }
 
 .footer__text {
