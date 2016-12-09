@@ -97,12 +97,13 @@ class App extends React.Component {
             <h1>Dirty Reprojectors</h1>
             <h3><span className='header__text'>Created by </span><a href='https://www.developmentseed.org/' target='_blank'><span className="collecticon collecticon-devseed"></span><span className='header__text'>Development Seed</span></a></h3>
             <div className='header__divider'>
-              <p className='header__description'>Getting projected data into vector tiles is a pain. Here you can upload a geojson, project it, and download a projected version of it that can be used in Mapbox Studio.</p>
+              <p className='header__description header__description--desktop'>Download geojson for common features in different projections, or upload your own WGS84 geojson and reproject it.</p>
+              <p className='header__description header__description--mobile'>Download geojson for common features in different projections.</p>
             </div>
           </header>
 
           <div className='selection'>
-            <dt className='dt__no-top'><div className='boldme'>1.</div> Choose Your Data</dt>
+            <dt><div className='boldme'>1.</div> Choose Your Data</dt>
             <dd>
               <select className='button__data' value={this.state.dataSource} onChange={this.setGeojson}>
                 <option>Land</option>
@@ -136,7 +137,7 @@ class App extends React.Component {
             </dd>
           </div>
           <footer className='selection__panel--footer'>
-            <span className='button__text'><a onClick={this.aboutToggle}>About</a> | </span><a href='https://github.com/developmentseed/dirty-reprojectors' target='_blank'><span className="collecticon collecticon-github"></span><span className='button__text'>Dirty Reprojectors CLI</span></a>
+            <span className='button__text button__about'><a onClick={this.aboutToggle}>About</a> | </span><a href='https://github.com/developmentseed/dirty-reprojectors' target='_blank'><span className="collecticon collecticon-github"></span><span className='button__text'>Dirty Reprojectors CLI</span></a>
           </footer>
         </div>
       </section>
@@ -144,6 +145,10 @@ class App extends React.Component {
       <section className='map-land'>
         <Map data={this.state.dataSource} projection={this.state.projection} uploadedData={this.state.uploadedData} loading={this.state.loading} />
       </section>
+
+      <footer className='footer__mobile'>
+        <a href='https://github.com/developmentseed/dirty-reprojectors' target='_blank'><span className="collecticon collecticon-github"></span><span className='button__text'>Dirty Reprojectors CLI</span></a>
+      </footer>
     </div>
   }
 }
