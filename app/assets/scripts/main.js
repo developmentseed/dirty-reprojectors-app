@@ -93,7 +93,7 @@ class App extends React.Component {
         <div className='selection__panel'>
           <header>
             <h1>Dirty Reprojectors</h1>
-            <h3><span className='header__text'>Created by </span><a href='https://www.developmentseed.org/' target='_blank'><span className="collecticon collecticon-devseed"></span><span className='header__text'>Development Seed</span></a></h3>
+            <h3><span className='header__text'>Created by </span><a href='https://www.developmentseed.org/' target='_blank'><span className="collecticon collecticons-devseed"></span><span className='header__text'>Development Seed</span></a></h3>
             <div className='header__divider'>
               <p className='header__description header__description--desktop'>Download geojson for common features in different projections, or upload your own WGS84 geojson and reproject it.</p>
               <p className='header__description header__description--mobile'>Download geojson for common features in different projections.</p>
@@ -114,7 +114,7 @@ class App extends React.Component {
               </select>
             </dd>
             <dd className='button__upload--face'>
-              <span><span className="collecticon collecticon-share"></span><span className='button__text'>Upload Geojson</span></span>
+              <span><span className="collecticon collecticons-share"></span><span className='button__text'>Upload Geojson</span></span>
               <input type='file' className='button__upload' value='' onChange={this.uploadData} />
             </dd>
             {this.state.uploadError ? (
@@ -131,11 +131,11 @@ class App extends React.Component {
             </dd>
             <dt><div className='boldme'>3.</div> Download Projected Geojson</dt>
             <dd>
-              <button className='button__download'><span className='collecticon collecticon-download'></span><span className='button__text'>Download</span></button>
+              <button className='button__download'><span className='collecticon collecticons-download'></span><span className='button__text'>Download</span></button>
             </dd>
           </div>
           <footer className='selection__panel--footer'>
-            <span className='button__text button__about'><a onClick={this.aboutToggle}>About</a> | </span><a href='https://github.com/developmentseed/dirty-reprojectors' target='_blank'><span className="collecticon collecticon-github"></span><span className='button__text'>Dirty Reprojectors CLI</span></a>
+            <span className='button__text button__about'><a onClick={this.aboutToggle}>About</a> | </span><a href='https://github.com/developmentseed/dirty-reprojectors' target='_blank'><span className="collecticon collecticons-github"></span><span className='button__text'>Dirty Reprojectors CLI</span></a>
           </footer>
         </div>
       </section>
@@ -145,7 +145,7 @@ class App extends React.Component {
       </section>
 
       <footer className='footer__mobile'>
-        <a href='https://github.com/developmentseed/dirty-reprojectors' target='_blank'><span className="collecticon collecticon-github"></span><span className='button__text'>Dirty Reprojectors CLI</span></a>
+        <a href='https://github.com/developmentseed/dirty-reprojectors' target='_blank'><span className="collecticon collecticons-github"></span><span className='button__text'>Dirty Reprojectors CLI</span></a>
       </footer>
     </div>
   }

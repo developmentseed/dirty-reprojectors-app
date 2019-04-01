@@ -18,6 +18,7 @@ var revReplace = require('gulp-rev-replace')
 var SassString = require('node-sass').types.String
 var cp = require('child_process')
 var notifier = require('node-notifier')
+var collecticons = require('collecticons-processor')
 
 // /////////////////////////////////////////////////////////////////////////////
 // --------------------------- Variables -------------------------------------//
@@ -160,26 +161,14 @@ gulp.task('vendorScripts', function () {
 // ------------------------- Collecticon tasks -------------------------------//
 // --------------------- (Font generation related) ---------------------------//
 // ---------------------------------------------------------------------------//
-gulp.task('collecticons', function (done) {
-  var args = [
-    'node_modules/collecticons-processor/bin/collecticons.js',
-    'compile',
-    'app/assets/graphics/collecticons/',
-    '--font-embed',
-    '--font-dest', 'app/assets/fonts',
-    '--font-name', 'Collecticons',
-    '--font-types', 'woff',
-    '--style-format', 'sass',
-    '--style-dest', 'app/assets/styles/core/',
-    '--style-name', 'collecticons',
-    '--class-name', 'collecticon',
-    '--author-name', 'Development Seed',
-    '--author-url', 'https://developmentseed.org/',
-    '--no-preview'
-  ]
-
-  return cp.spawn('node', args, {stdio: 'inherit'})
-    .on('close', done)
+gulp.task('collecticons', function () {
+  return collecticons.compile({
+    dirPath: 'app/assets/graphics/collecticons/',
+    fontName: 'Collecticons',
+    styleDest: 'app/assets/styles/core/',
+    styleName: '_collecticons',
+    preview: false
+  })
 })
 
 // //////////////////////////////////////////////////////////////////////////////
